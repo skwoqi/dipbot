@@ -249,7 +249,7 @@ async def cmd_start(message: Message, state: FSMContext):
         "Мы предоставляем:\n"
         "🚧 Экскаваторы-погрузчики (с навесным оборудованием)\n"
         "🏭 Автокраны грузоподъемностью до 25 тонн\n"
-        "🚛 Самосвалы объемом до 20 тонн\n\n"
+        "🚛 Самосвалы объемом до 30 тонн\n\n"
         "Выберите действие в меню ниже:"
     )
     
@@ -385,9 +385,9 @@ async def prices_handler(message: Message):
     """Обработчик кнопки цен"""
     text = (
         "💰 ЦЕНЫ (почасовая оплата):\n\n"
-        "🚧 Экскаватор-погрузчик: 2 500 руб/час\n"
+        "🚧 Экскаватор-погрузчик: 3 500 руб/час\n"
         "🏭 Автокран: 3 500 руб/час\n"
-        "🚛 Самосвал: 2 000 руб/час\n\n"
+        "🚛 Самосвал: 3 000 руб/час\n\n"
         "💡 Минимальный заказ - 2 часа\n"
         "🌟 Скидка 10% при аренде от 20 часов"
     )
@@ -404,10 +404,10 @@ async def contacts_handler(message: Message):
     """Контакты"""
     text = (
         "📞 КОНТАКТЫ:\n\n"
-        "Телефон: +7 (999) 123-45-67\n"
-        "Telegram: @spec_technika_manager\n"
-        "Email: rent@spectech.ru\n\n"
-        "📍 Адрес: г. Москва, ул. Строителей, 15\n\n"
+        "Телефон: +7 (917) 712-73-37\n"
+        "Telegram: @Ochetov\n"
+        "Email: ochetov01@mail.ru\n\n"
+        "📍 Адрес: РМЭ посёлок Новый садовый массив № 1, 1\n\n"
         "⏰ Режим работы: 24/7\n"
         "🚚 Доставка техники бесплатная"
     )
@@ -419,18 +419,18 @@ async def contacts_handler(message: Message):
 async def catalog_excavator(callback: CallbackQuery, state: FSMContext):
     """Показ экскаватора-погрузчика"""
     # Здесь можно добавить реальное фото
+    photo_url = "https://psv4.userapi.com/s/v1/d2/RwmCvz6PFqPEXPuv_CcKAru0geVuEL1lNOzRjSAMV-pNQDZ96JSV77v62PsDLR9hwGKHVWNfgdHLNSntNwfL1q0Fa5PtF_LUXRzDF0NYTu7YDKQb66dHrCBl-3zDFmFir9o8arqeu2Zr/traktor.jpg"
     text = (
-        "🚧 ЭКСКАВАТОР-ПОГРУЗЧИК JCB 3CX\n\n"
+        "🚧 ЭКСКАВАТОР-ПОГРУЗЧИК Hidromek HMK 102S\n\n"
         "Характеристики:\n"
-        "• Мощность: 92 л.с.\n"
-        "• Глубина копания: 4.5 м\n"
-        "• Грузоподъемность: 2.5 т\n"
-        "• Год выпуска: 2022\n\n"
+        "• Мощность: 100 л.с.\n"
+        "• Грузоподъемность: 3.2 т\n"
+        "• Год выпуска: 2019-2020\n\n"
         "💡 Можно установить различное навесное оборудование:\n"
         "- Ковш\n"
         "- Гидромолот\n"
         "- Ямобур\n\n"
-        "💰 Стоимость: 2 500 руб/час"
+        "💰 Стоимость: 3 500 руб/час"
     )
     
     button = [[InlineKeyboardButton(text="🔧 Заказать эту технику", callback_data="order_excavator")]]
@@ -443,11 +443,11 @@ async def catalog_excavator(callback: CallbackQuery, state: FSMContext):
 async def catalog_crane(callback: CallbackQuery):
     """Показ автокрана"""
     text = (
-        "🏭 АВТОКРАН Ивановец 25 тонн\n\n"
+        "🏭 Автокран вездеход «Клинцы» 25 т. 28 м.\n\n"
         "Характеристики:\n"
         "• Грузоподъемность: 25 т\n"
-        "• Вылет стрелы: 21 м\n"
-        "• Год выпуска: 2023\n\n"
+        "• Вылет стрелы: 28 м\n"
+        "• Год выпуска: 2024\n\n"
         "💰 Стоимость: 3 500 руб/час"
     )
     
@@ -461,12 +461,12 @@ async def catalog_crane(callback: CallbackQuery):
 async def catalog_dump(callback: CallbackQuery):
     """Показ самосвала"""
     text = (
-        "🚛 САМОСВАЛ HOWO 20 тонн\n\n"
+        "🚛 Самосвал Shacman X3000 30 тонн \n\n"
         "Характеристики:\n"
-        "• Грузоподъемность: 20 т\n"
-        "• Объем кузова: 15 м³\n"
-        "• Год выпуска: 2022\n\n"
-        "💰 Стоимость: 2 000 руб/час"
+        "• Грузоподъемность: 30 т\n"
+        "• Объем кузова: 20 м³\n"
+        "• Год выпуска: 2024\n\n"
+        "💰 Стоимость: 3 000 руб/час"
     )
     
     button = [[InlineKeyboardButton(text="🔧 Заказать эту технику", callback_data="order_dump")]]
@@ -694,9 +694,9 @@ async def calc_details(message: Message, state: FSMContext):
     text = message.text.lower()
     
     prices = {
-        "экскаватор": 2500,
+        "экскаватор": 3500,
         "автокран": 3500,
-        "самосвал": 2000
+        "самосвал": 3000
     }
     
     # Простой парсинг
